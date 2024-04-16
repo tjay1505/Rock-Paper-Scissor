@@ -58,7 +58,7 @@
   background: url(../images/bg-triangle.svg);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 70%;
+  background-size: 50%;
   -o-object-fit: contain;
      object-fit: contain;
   -o-object-fit: cover;
