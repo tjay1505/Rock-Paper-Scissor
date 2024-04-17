@@ -7,12 +7,13 @@ $bgc:hsl(214, 47%, 23%);
 }
 
 .cont{
+    //position: relative;
+    width: 100vw;
     height: 100vh;
     background-color: $bgc;
     display: flex;
     flex-direction: column;
     align-items: center;
-
 }
 
 .header{
@@ -56,44 +57,44 @@ $bgc:hsl(214, 47%, 23%);
 }
 
 .game{
-    display: grid;
+    display:grid;
     place-items: center;
     //border: 1px solid white;
     height: 40vh;
     width: 90%;
-    margin-top: 5%;
+    margin-top: 15%;
     background: url(../images/bg-triangle.svg);
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 50%;
+    background-size: 70%;
     object-fit: contain;
     object-fit: cover;
     grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
     grid-template-areas: " imgOne imgTwo "
                          " imgThree imgThree" ;
-   
-    .img1,.img2,.img3{
-        background: #ffffff;
-        width: 11vmax;
-        height: 11vmax;
-        padding: 5%;
-        object-fit: contain;
-        border-radius: 50%;
-    }
-    .img1{
-        border: 15px solid rgb(0, 132, 255);
-        grid-area: imgOne;
-    }
-    .img2{
-        border: 15px solid rgb(255, 73, 73);
-        grid-area: imgTwo;
-    }
-    .img3{
-        border: 15px solid rgb(236, 232, 0);
-        grid-area: imgThree;
-    }
     
+}
+
+.img1,.img2,.img3{
+    background: #ffffff;
+    width: 11vmax;
+    height: 11vmax;
+    padding: 5%;
+    object-fit: contain;
+    border-radius: 50%;
+}
+.img1{
+    border: 15px solid rgb(0, 132, 255);
+    grid-area: imgOne;
+}
+.img2{
+    border: 15px solid rgb(255, 73, 73);
+    grid-area: imgTwo;
+}
+.img3{
+    border: 15px solid rgb(236, 232, 0);
+    grid-area: imgThree;
 }
 
 .footer{
@@ -115,5 +116,54 @@ $bgc:hsl(214, 47%, 23%);
     button:hover{
         color: black;
         background-color: #fff;
+    }
+}
+.rules{
+    height: 100vh;
+    width: 100vw;
+    background: url("../design/original/mobile-rules-modal.jpg");
+    position: absolute;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    top: 0;
+    z-index: -1;
+}   
+
+.game2{
+    
+    //border: 1px solid white;
+    margin-top: 15%;
+    width: 90%;
+    display: flex;
+    padding: 5% 0;
+    align-items: center;
+    justify-content: space-between;
+    display: none;
+}
+
+.result{
+    position: absolute;
+    bottom: 100px;
+    height: 20vh;
+    //border: 1px solid white;
+    width: 90%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    h1{
+        font-size: 6vmax;
+        color: wheat;
+    }
+    button{
+        width: 70%;
+        height: 30%;
+        font-size: 2vmax;
+        font-weight: 500;
+        color: gray;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        border-radius: 2vmin;
     }
 }

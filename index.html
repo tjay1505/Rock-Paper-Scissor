@@ -14,6 +14,8 @@
 </head>
 <body>
 
+  <div class="rules" id="rule" onclick="document.getElementById('rule').style.zIndex = -1" ></div>
+
   <div class="cont">
 
       <div class="header">
@@ -28,19 +30,119 @@
         </div>
       </div>
 
-      <div class="game">
-        <img class="img1" src="./images/icon-paper.svg" alt="">
-        <img class="img2" src="./images/icon-rock.svg" alt="">
-        <img class="img3" src="./images/icon-scissors.svg" alt="">
+      <div class="game" id="games">
+        <img class="img1" onclick="doGame('./images/icon-paper.svg')" src="./images/icon-paper.svg" alt="">
+        <img class="img2" onclick="doGame('./images/icon-rock.svg')" src="./images/icon-rock.svg" alt="">
+        <img class="img3" onclick="doGame('./images/icon-scissors.svg')" src="./images/icon-scissors.svg" alt="">
+      </div>
+
+      <div id="games2" class="game2">
+        <img id="imgG1"  src="./images/icon-rock.svg" alt="">
+        <img id="imgG2" src="" alt="">
+      </div>
+
+      <div class="result" id="result">
+        <h1 id="resholder" ></h1>
+        <button onclick="reset()" >play again</button>
       </div>
 
       <div class="footer">
-        <button>RULES</button>
+        <button onclick="document.getElementById('rule').style.zIndex = 1" >RULES</button>
       </div>
 
   </div>
-
   
+  <script>
 
+function getRandomIntInclusive(min, max) {
+  const minCeiled = Math.ceil(min);
+  const maxFloored = Math.floor(max);
+  return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); // The maximum is inclusive and the minimum is inclusive
+}
+
+
+    const game1 = document.getElementById("games")
+    const game2 = document.getElementById("games2")
+    const imgG1 = document.getElementById("imgG1")
+    const imgG2 = document.getElementById("imgG2")
+    const resholder = document.getElementById("resholder")
+    const result = document.getElementById("result")
+    const imgary = {
+      i1:"./images/icon-paper.svg",
+      i2:"./images/icon-rock.svg",
+      i3:"./images/icon-scissors.svg"
+    }
+    imgG1.className = 'img1'
+    imgG2.className = 'img2'
+
+    function reset(){
+      game1.style.display = 'grid'
+      game2.style.display = 'none'
+      result.style.display = 'none'
+      imgG2.setAttribute('src',"")
+      resholder.innerText = ''
+    }
+   
+    function upDateRes(j,q){
+      result.style.display = "flex"
+      const newary = ["",'YOU WIN!','YOU LOSE!','MATCH DRAW..']
+      //resholder.innerText = newary[j]
+      if(j == q){
+        resholder.innerText = newary[3]
+      }
+      else if(j == './images/icon-paper.svg' && q == "./images/icon-rock.svg"){
+        resholder.innerText = newary[1]
+      }
+      else if(j == './images/icon-paper.svg' && q == "./images/icon-scissors.svg"){
+        resholder.innerText = newary[2]
+      }
+      else if(j == './images/icon-rock.svg' && q == "./images/icon-paper.svg"){
+        resholder.innerText = newary[2]
+      }
+      else if(j == './images/icon-rock.svg' && q == "./images/icon-scissors.svg"){
+        resholder.innerText = newary[1]
+      }
+      else if(j == './images/icon-scissors.svg' && q == "./images/icon-paper.svg"){
+        resholder.innerText = newary[1]
+      }
+      else if(j == './images/icon-sicssors.svg' && q == "./images/icon-rock.svg"){
+        resholder.innerText = ""
+      }
+      else{
+        resholder.innerText = newary[2]
+      }
+    }
+
+    function doGame(s){
+      game1.style.display = "none"
+      game2.style.display = 'flex'
+
+      imgG1.setAttribute('src',s)
+     //console.log(s);
+      let x = getRandomIntInclusive(1,3)
+      setTimeout(() => {
+        switch (x) {
+          case 1:
+          imgG2.setAttribute("src",imgary.i1)
+          upDateRes(s,imgary.i1)
+            break;
+          case 2:
+          imgG2.setAttribute("src",imgary.i2)
+          upDateRes(s,imgary.i2)
+            break;
+          case 3:
+          imgG2.setAttribute("src",imgary.i3)
+          upDateRes(s,imgary.i3)
+            break;
+        
+          default:
+            console.log('dsrf');
+            break;
+        }
+        
+      },1000)
+    }
+    
+  </script>
 </body>
 </html>
