@@ -25,7 +25,7 @@
         <div class="score">
           <p>Score</p>
           <div id="val">
-            15
+            0
           </div>
         </div>
       </div>
@@ -38,7 +38,10 @@
 
       <div id="games2" class="game2">
         <img id="imgG1"  src="./images/icon-rock.svg" alt="">
-        <img id="imgG2" src="" alt="">
+        <img id="imgG2" src="./images/loading_6356617.png" alt="">
+      </div>
+      <div id="players">
+        <span>YOU PICKED</span> <span>HOUSE PICKED</span>
       </div>
 
       <div class="result" id="result">
@@ -67,6 +70,8 @@ function getRandomIntInclusive(min, max) {
     const imgG2 = document.getElementById("imgG2")
     const resholder = document.getElementById("resholder")
     const result = document.getElementById("result")
+    const players = document.getElementById("players")
+    const value = document.getElementById("val")
     const imgary = {
       i1:"./images/icon-paper.svg",
       i2:"./images/icon-rock.svg",
@@ -79,7 +84,9 @@ function getRandomIntInclusive(min, max) {
       game1.style.display = 'grid'
       game2.style.display = 'none'
       result.style.display = 'none'
-      imgG2.setAttribute('src',"")
+      players.style.display = 'none'
+      imgG2.setAttribute('src','./images/loading_6356617.png')
+      //imgG2.setAttribute('src',"")
       resholder.innerText = ''
     }
    
@@ -111,12 +118,38 @@ function getRandomIntInclusive(min, max) {
       else{
         resholder.innerText = newary[2]
       }
+      let reshold = resholder.innerText
+      let realscore = value.innerText
+      parseInt(realscore)
+      switch (reshold) {
+        case 'YOU WIN!':
+          realscore++
+          value.innerText = realscore 
+          //console.log(1);
+          break;
+        case 'YOU LOSE!':
+          realscore--
+          value.innerText = realscore 
+          //console.log(2);
+          break;
+        case 'MATCH DRAW..':
+          value.innerText = realscore
+          break;
+        default:
+          break;
+      }
+      if(realscore == -1 ){
+       value.innerText = 0
+      }
+      else{
+      }
+
     }
 
     function doGame(s){
       game1.style.display = "none"
       game2.style.display = 'flex'
-
+      players.style.display = 'flex'
       imgG1.setAttribute('src',s)
      //console.log(s);
       let x = getRandomIntInclusive(1,3)
@@ -140,7 +173,7 @@ function getRandomIntInclusive(min, max) {
             break;
         }
         
-      },1000)
+      },2500)
     }
     
   </script>

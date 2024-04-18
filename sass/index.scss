@@ -5,7 +5,11 @@ $bgc:hsl(214, 47%, 23%);
     margin: 0;
     font-family: $f1;
 }
-
+body{
+    display: grid;
+    background-color:$bgc;
+    place-items: center;
+}
 .cont{
     //position: relative;
     width: 100vw;
@@ -47,9 +51,7 @@ $bgc:hsl(214, 47%, 23%);
         height: 80%;
         border-radius: 5px;
         font-weight: 700;
-        p{
-
-        }
+        
         #val{
             font-size: 6vmax;
         }
@@ -142,6 +144,17 @@ $bgc:hsl(214, 47%, 23%);
     display: none;
 }
 
+#players{
+    color: white;
+    width: 80%;
+    font-size: x-large;
+    margin-top: 5%;
+    display: flex;
+    justify-content: space-between;
+    display: none;
+
+}
+
 .result{
     position: absolute;
     bottom: 100px;
@@ -166,4 +179,99 @@ $bgc:hsl(214, 47%, 23%);
         text-transform: uppercase;
         border-radius: 2vmin;
     }
+}
+
+#imgG2{
+    animation: roll 1s 2 ;
+}
+#imgG1{
+    animation: spread 2s 3;
+    transition: all linear;
+}
+@keyframes spread{
+    from{
+        box-shadow: 1px 1px 12px 2px rgba(255, 255, 255, 0.555);
+    }
+    to{
+        box-shadow: 1px 1px 12px 19px rgba(0, 0, 0, 0.459);
+    }
+}
+@keyframes roll {
+    from{
+        transform: rotate(1deg);
+
+    }
+    to{
+        transform: rotate(-360deg);
+    }
+}
+
+@media only screen and (min-width: 460px) {
+       .game2{
+        width: 80%;
+       }
+        .rules,.cont{
+            width: 80%;
+        }
+        .game{
+            background-size: 50%;
+        }
+        .img1,.img2,.img3{
+            //width: 8vmin;
+            //height: 8vmin;
+        }
+        .result{
+            display: flex;
+            bottom: 60px;
+            button{
+                width: 30%;
+            }
+        }
+      }
+
+@media only screen and (min-width : 760px) {
+    .game2,#players{
+        width: 40vw;
+       }
+        .header{
+            width: 60vw;
+            .logo{
+                width: 20%;
+            }
+            .score{
+                width: 20%;
+                #val{
+                    font-size: 5vmin;
+                }
+            }
+            
+        }
+        .result{
+            bottom: 50px;
+            width: 40%;
+            h1{
+                font-size: 6vmin;
+            }
+            button{
+                width: 40%;
+            }
+        }
+        .game{
+            
+            //background-size: contain;
+           background-size: 50%;
+        }
+
+        .footer{
+            width: 20vw;
+            right: 10px;
+        }
+
+        .rules,.cont{
+            width: 30%;
+        }
+        .img1,.img2,.img3{
+            width: 9vmin;
+            height: 9vmin;
+        }
 }
