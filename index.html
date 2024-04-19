@@ -36,6 +36,15 @@
         <img class="img3" onclick="doGame('./images/icon-scissors.svg')" src="./images/icon-scissors.svg" alt="">
       </div>
 
+      <div id="bonus">
+        <img class="imgb1 bonus-img" onclick="doGameBonus('./images/icon-lizard.svg')" src="./images/icon-lizard.svg" alt="">
+        <img class="imgb2 bonus-img" onclick="doGameBonus('./images/icon-spock.svg')" src="./images/icon-spock.svg" alt="">
+        <img class="imgb3 bonus-img" onclick="doGameBonus('./images/icon-paper.svg')" src="./images/icon-paper.svg" alt="">
+        <img class="imgb4 bonus-img" onclick="doGameBonus('./images/icon-Scissors.svg')" src="./images/icon-scissors.svg" alt="">
+        <img class="imgb5 bonus-img" onclick="doGameBonus('./images/icon-rock.svg')" src="./images/icon-rock.svg" alt="">
+
+      </div>
+
       <div id="games2" class="game2">
         <img id="imgG1"  src="./images/icon-rock.svg" alt="">
         <img id="imgG2" src="./images/loading_6356617.png" alt="">
@@ -75,8 +84,11 @@ function getRandomIntInclusive(min, max) {
     const imgary = {
       i1:"./images/icon-paper.svg",
       i2:"./images/icon-rock.svg",
-      i3:"./images/icon-scissors.svg"
+      i3:"./images/icon-scissors.svg",
+      i4:"./images/icon-lizard.svg",
+      i5:"./images/icon-spock.svg"
     }
+    const imgobj = ["","./images/icon-paper.svg","./images/icon-rock.svg","./images/icon-scissors.svg","./images/icon-lizard.svg","./images/icon-spock.svg"]
     imgG1.className = 'img1'
     imgG2.className = 'img2'
 
@@ -92,7 +104,7 @@ function getRandomIntInclusive(min, max) {
    
     function upDateRes(j,q){
       result.style.display = "flex"
-      const newary = ["",'YOU WIN!','YOU LOSE!','MATCH DRAW..']
+      let newary = ["",'YOU WIN!','YOU LOSE!','MATCH DRAW..']
       //resholder.innerText = newary[j]
       if(j == q){
         resholder.innerText = newary[3]
@@ -175,7 +187,85 @@ function getRandomIntInclusive(min, max) {
         
       },2500)
     }
-    
+    const bonus = document.getElementById('bonus')
+
+    function switchtab(a){
+      game1.style.display = "none"
+      game2.style.display = 'flex'
+      bonus.style.display = 'none'
+      players.style.display = 'flex'
+      result.style.display = 'flex'
+      imgG1.setAttribute('src',a)
+     console.log(a);
+      let x = getRandomIntInclusive(1,5)
+      let newary = ["",'YOU WIN!','YOU LOSE!','MATCH DRAW..']
+      setTimeout(() => {
+        imgG2.setAttribute('src',imgobj[x])
+        let r  = imgobj[x]
+        console.log(r);
+        switch (a) {
+        case "./images/icon-lizard.svg":
+          console.log('po');
+          if(x = './images/icon-lizard.svg'){
+              resholder.innerText = newary[3]
+          }
+          else if(x = './images/icon-rock.svg'){
+            resholder.innerText = newary[1]
+            console.log('lguo');
+          }
+          else if(x = './images/icon-paper.svg'){
+            resholder.innerText = newary[2]
+          }
+          else if(x = './images/icon-spock.svg'){
+            resholder.innerText = newary[1]
+          }
+          else{
+            console.log('9u8h');
+          }
+          break;
+        case "./images/icon-spock.svg":
+          imgG1.setAttribute('src',a)
+          break;
+        case "./images/icon-rock.svg":
+          imgG1.setAttribute('src',a)
+          break;
+        case "./images/icon-paper.svg":
+          imgG1.setAttribute('src',a)
+          break;
+        case "./images/icon-Scissors.svg":
+          imgG1.setAttribute('src',a)
+          break;
+        default:
+          break;
+      }
+        
+      },2500)
+    }
+
+    function doGameBonus(a){
+      console.log(a);
+     
+      switch (a) {
+        case "./images/icon-lizard.svg":
+          imgG1.setAttribute('src',a)
+          break;
+        case "./images/icon-spock.svg":
+          imgG1.setAttribute('src',a)
+          break;
+        case "./images/icon-rock.svg":
+          imgG1.setAttribute('src',a)
+          break;
+        case "./images/icon-paper.svg":
+          imgG1.setAttribute('src',a)
+          break;
+        case "./images/icon-Scissors.svg":
+          imgG1.setAttribute('src',a)
+          break;
+        default:
+          break;
+      }
+      switchtab(a)
+    }
   </script>
 </body>
 </html>
