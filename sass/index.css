@@ -58,7 +58,6 @@ body {
 
 .game {
   display: grid;
-  display: none;
   place-items: center;
   height: 40vh;
   width: 90%;
@@ -211,6 +210,7 @@ body {
   background: url("../images/bg-pentagon.svg") no-repeat center;
   background-size: 80%;
   display: grid;
+  display: none;
   place-items: center;
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr;
@@ -312,4 +312,48 @@ body {
     width: 9vmin;
     height: 9vmin;
   }
+}
+#bonusLoader {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: 3;
+  background-color: rgba(255, 255, 255, 0);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  display: none;
+  justify-content: center;
+  flex-direction: column;
+}
+#bonusLoader h1 {
+  width: 80%;
+  padding: 1%;
+  background-color: #fff;
+  border-radius: 1vmin;
+  margin-bottom: 15%;
+  border-radius: 1vmin;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+#bonusLoader span, #bonusLoader button {
+  background-color: #fff;
+  width: 80%;
+  height: 40px;
+  font-size: x-large;
+  display: grid;
+  place-items: center;
+  border-radius: 1vmin;
+  padding: 2% 0;
+  margin-bottom: 15%;
+}
+#bonusLoader button {
+  width: -moz-max-content;
+  width: max-content;
+  padding: 0 2%;
+  border: none;
+  color: white;
+  background-color: #000000;
 }/*# sourceMappingURL=index.css.map */

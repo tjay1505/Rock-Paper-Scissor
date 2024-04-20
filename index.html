@@ -20,7 +20,7 @@
 
       <div class="header">
         <div class="logo">
-          <img src="./images/logo.svg" alt="">
+          <img src="./images/logo.svg" id="logoimg" alt="">
         </div>
         <div class="score">
           <p>Score</p>
@@ -62,210 +62,17 @@
         <button onclick="document.getElementById('rule').style.zIndex = 1" >RULES</button>
       </div>
 
+      <div id="bonusLoader">
+        <h1 >You  Scored <p id="bon"></p> points</h1>
+        <span>Entering Bonus Level...!</span>
+        <button onclick="document.getElementById('bonusLoader').style.display = 'none'" >Contiue</button>
+
+      </div>
+
   </div>
+
+  <script src="./index.js"></script>
   
-  <script>
-
-function getRandomIntInclusive(min, max) {
-  const minCeiled = Math.ceil(min);
-  const maxFloored = Math.floor(max);
-  return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); // The maximum is inclusive and the minimum is inclusive
-}
-
-
-    const game1 = document.getElementById("games")
-    const game2 = document.getElementById("games2")
-    const imgG1 = document.getElementById("imgG1")
-    const imgG2 = document.getElementById("imgG2")
-    const resholder = document.getElementById("resholder")
-    const result = document.getElementById("result")
-    const players = document.getElementById("players")
-    const value = document.getElementById("val")
-    const imgary = {
-      i1:"./images/icon-paper.svg",
-      i2:"./images/icon-rock.svg",
-      i3:"./images/icon-scissors.svg",
-      i4:"./images/icon-lizard.svg",
-      i5:"./images/icon-spock.svg"
-    }
-    const imgobj = ["","./images/icon-paper.svg","./images/icon-rock.svg","./images/icon-scissors.svg","./images/icon-lizard.svg","./images/icon-spock.svg"]
-    imgG1.className = 'img1'
-    imgG2.className = 'img2'
-
-    function reset(){
-      game1.style.display = 'grid'
-      game2.style.display = 'none'
-      result.style.display = 'none'
-      players.style.display = 'none'
-      imgG2.setAttribute('src','./images/loading_6356617.png')
-      //imgG2.setAttribute('src',"")
-      resholder.innerText = ''
-    }
-   
-    function upDateRes(j,q){
-      result.style.display = "flex"
-      let newary = ["",'YOU WIN!','YOU LOSE!','MATCH DRAW..']
-      //resholder.innerText = newary[j]
-      if(j == q){
-        resholder.innerText = newary[3]
-      }
-      else if(j == './images/icon-paper.svg' && q == "./images/icon-rock.svg"){
-        resholder.innerText = newary[1]
-      }
-      else if(j == './images/icon-paper.svg' && q == "./images/icon-scissors.svg"){
-        resholder.innerText = newary[2]
-      }
-      else if(j == './images/icon-rock.svg' && q == "./images/icon-paper.svg"){
-        resholder.innerText = newary[2]
-      }
-      else if(j == './images/icon-rock.svg' && q == "./images/icon-scissors.svg"){
-        resholder.innerText = newary[1]
-      }
-      else if(j == './images/icon-scissors.svg' && q == "./images/icon-paper.svg"){
-        resholder.innerText = newary[1]
-      }
-      else if(j == './images/icon-sicssors.svg' && q == "./images/icon-rock.svg"){
-        resholder.innerText = ""
-      }
-      else{
-        resholder.innerText = newary[2]
-      }
-      let reshold = resholder.innerText
-      let realscore = value.innerText
-      parseInt(realscore)
-      switch (reshold) {
-        case 'YOU WIN!':
-          realscore++
-          value.innerText = realscore 
-          //console.log(1);
-          break;
-        case 'YOU LOSE!':
-          realscore--
-          value.innerText = realscore 
-          //console.log(2);
-          break;
-        case 'MATCH DRAW..':
-          value.innerText = realscore
-          break;
-        default:
-          break;
-      }
-      if(realscore == -1 ){
-       value.innerText = 0
-      }
-      else{
-      }
-
-    }
-
-    function doGame(s){
-      game1.style.display = "none"
-      game2.style.display = 'flex'
-      players.style.display = 'flex'
-      imgG1.setAttribute('src',s)
-     //console.log(s);
-      let x = getRandomIntInclusive(1,3)
-      setTimeout(() => {
-        switch (x) {
-          case 1:
-          imgG2.setAttribute("src",imgary.i1)
-          upDateRes(s,imgary.i1)
-            break;
-          case 2:
-          imgG2.setAttribute("src",imgary.i2)
-          upDateRes(s,imgary.i2)
-            break;
-          case 3:
-          imgG2.setAttribute("src",imgary.i3)
-          upDateRes(s,imgary.i3)
-            break;
-        
-          default:
-            console.log('dsrf');
-            break;
-        }
-        
-      },2500)
-    }
-    const bonus = document.getElementById('bonus')
-
-    function switchtab(a){
-      game1.style.display = "none"
-      game2.style.display = 'flex'
-      bonus.style.display = 'none'
-      players.style.display = 'flex'
-      result.style.display = 'flex'
-      imgG1.setAttribute('src',a)
-     console.log(a);
-      let x = getRandomIntInclusive(1,5)
-      let newary = ["",'YOU WIN!','YOU LOSE!','MATCH DRAW..']
-      setTimeout(() => {
-        imgG2.setAttribute('src',imgobj[x])
-        let r  = imgobj[x]
-        console.log(r);
-        switch (a) {
-        case "./images/icon-lizard.svg":
-          console.log('po');
-          if(x = './images/icon-lizard.svg'){
-              resholder.innerText = newary[3]
-          }
-          else if(x = './images/icon-rock.svg'){
-            resholder.innerText = newary[1]
-            console.log('lguo');
-          }
-          else if(x = './images/icon-paper.svg'){
-            resholder.innerText = newary[2]
-          }
-          else if(x = './images/icon-spock.svg'){
-            resholder.innerText = newary[1]
-          }
-          else{
-            console.log('9u8h');
-          }
-          break;
-        case "./images/icon-spock.svg":
-          imgG1.setAttribute('src',a)
-          break;
-        case "./images/icon-rock.svg":
-          imgG1.setAttribute('src',a)
-          break;
-        case "./images/icon-paper.svg":
-          imgG1.setAttribute('src',a)
-          break;
-        case "./images/icon-Scissors.svg":
-          imgG1.setAttribute('src',a)
-          break;
-        default:
-          break;
-      }
-        
-      },2500)
-    }
-
-    function doGameBonus(a){
-      console.log(a);
-     
-      switch (a) {
-        case "./images/icon-lizard.svg":
-          imgG1.setAttribute('src',a)
-          break;
-        case "./images/icon-spock.svg":
-          imgG1.setAttribute('src',a)
-          break;
-        case "./images/icon-rock.svg":
-          imgG1.setAttribute('src',a)
-          break;
-        case "./images/icon-paper.svg":
-          imgG1.setAttribute('src',a)
-          break;
-        case "./images/icon-Scissors.svg":
-          imgG1.setAttribute('src',a)
-          break;
-        default:
-          break;
-      }
-      switchtab(a)
-    }
-  </script>
+  
 </body>
 </html>
